@@ -11,6 +11,7 @@ class BankAccount
   end
 
   def withdraw(amount)
+    raise("You cannot exceed your balance") if amount > @balance
     @balance -= amount
   end
 end

@@ -12,7 +12,12 @@ RSpec.describe BankAccount do
   end
 
   it 'can withdraw money and the balance is updated' do
+    account.deposit(20)
     expect{ account.withdraw(20) }.to change { account.balance }.by(-20)
+  end
+
+  it 'user withdraw cannot exceed balance' do
+    expect {account.withdraw(10) }.to raise_error('You cannot exceed your balance')
   end
 
 end
