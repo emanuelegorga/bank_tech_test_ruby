@@ -7,4 +7,9 @@ RSpec.describe BankAccount do
     expect(account.balance).to eq(0)
   end
 
+  it 'can deposit money and the balance gets updated' do
+    account.deposit(50)
+    expect(account.balance).to eq(50)
+  end
+
 end
