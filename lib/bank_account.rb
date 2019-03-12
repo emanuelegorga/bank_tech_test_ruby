@@ -1,6 +1,7 @@
 require_relative 'transaction'
 require_relative 'transactions_history'
 require_relative 'statement'
+require 'date'
 
 class BankAccount
   attr_reader :balance, :transactionsHistory
@@ -11,15 +12,15 @@ class BankAccount
     @balance = balance
   end
 
-  def deposit(amount)
+  def deposit(amount, date=Time.now.strftime("%m/%d/%Y"))
     @balance += amount
-    @transactionsHistory.add(amount, @balance, 'deposit')
+    @transactionsHistory.add(amount, @balance, 'deposit', date)
   end
 
-  def withdraw(amount)
+  def withdraw(amount, date=Time.now.strftime("%m/%d/%Y"))
     raise("You cannot exceed your balance") if amount > @balance
     @balance -= amount
-    @transactionsHistory.add(amount, @balance, 'withdraw')
+    @transactionsHistory.add(amount, @balance, 'withdraw', date)
   end
 
   def statement
