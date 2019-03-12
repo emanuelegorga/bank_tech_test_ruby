@@ -18,12 +18,18 @@ class BankAccount
   end
 
   def withdraw(amount, date=Time.now.strftime("%m/%d/%Y"))
-    raise("You cannot exceed your balance") if amount > @balance
+    isValid?(amount)
     @balance -= amount
     @transactionsHistory.add(amount, @balance, 'withdraw', date)
   end
 
   def statement
     @statement.printStatement(@transactionsHistory.history)
+  end
+
+  private
+
+  def isValid?(amount)
+    raise("You cannot exceed your balance") if amount > @balance
   end
 end
