@@ -28,5 +28,5 @@ RSpec.describe BankAccount do
       expect { account.withdraw(10) }.to raise_error('You cannot exceed your balance')
     end
   end
-
+  
 end
