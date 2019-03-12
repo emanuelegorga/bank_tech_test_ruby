@@ -2,10 +2,10 @@ class Statement
 
   def printStatement(transactions)
     @header = "date  ||  credit  ||  debit  ||  balance\n"
-    transactions.each do |transaction|
+    transactions.reverse.each do |transaction|
       transaction.type == 'deposit' ? deposit(transaction) : withdrawal(transaction)
     end
-    return @header
+    @header
   end
 
   private
