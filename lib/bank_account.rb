@@ -6,10 +6,10 @@ require 'date'
 class BankAccount
   attr_reader :balance, :transactionsHistory
 
-  def initialize(transactionsHistory = TransactionsHistory.new, statement=Statement.new, balance = 0)
+  def initialize(transactionsHistory = TransactionsHistory.new, statement=Statement.new)
     @transactionsHistory = transactionsHistory
     @statement = statement
-    @balance = balance
+    @balance = 0
   end
 
   def deposit(amount, date=Time.now.strftime("%m/%d/%Y"))
